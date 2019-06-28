@@ -5,3 +5,42 @@ yum update -y
 service httpd start
 chkconfig httpd on
 echo "<html><body bgcolor="red"><h1> Hello World</h1></body></html>" > /var/www/html/index.html
+
+
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+dd if=/dev/zero of=/dev/null bs=50000 count=100000
+
+
+chmod 755 dd.sh
+nohup ./dd.sh &

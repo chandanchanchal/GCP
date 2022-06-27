@@ -25,3 +25,6 @@ cat k8s/deployments/dev/frontend-dev.yaml.tmpl
 
 
 for template in $(find . -name '*.tmpl'); do envsubst '${PROJECT_ID} ${ZONE} ${CLUSTER} ${APP_NAME}' < ${template} > ${template%.*}; done
+
+
+cat k8s/deployments/dev/frontend-dev.yam

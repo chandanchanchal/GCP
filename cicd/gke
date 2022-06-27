@@ -28,3 +28,6 @@ for template in $(find . -name '*.tmpl'); do envsubst '${PROJECT_ID} ${ZONE} ${C
 
 
 cat k8s/deployments/dev/frontend-dev.yam
+
+git config --global user.email "YOUR_EMAIL_ADDRESS"
+git config --global user.name "YOUR_USERNAME"

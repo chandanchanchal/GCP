@@ -19,3 +19,6 @@ git clone https://github.com/GoogleCloudPlatform/software-delivery-workshop.git 
 
 cd gke-progression/labs/gke-progression
 rm -rf ../../.git
+
+
+cat k8s/deployments/dev/frontend-dev.yaml.tmpl

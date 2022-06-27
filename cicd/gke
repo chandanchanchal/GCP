@@ -4,3 +4,12 @@ export PROJECT_NUMBER=$(gcloud projects describe $PROJECT_ID --format='value(pro
 export ZONE=us-central1-b
 export CLUSTER=gke-progression-cluster
 export APP_NAME=myapp
+
+
+gcloud services enable \
+    cloudresourcemanager.googleapis.com \
+    container.googleapis.com \
+    sourcerepo.googleapis.com \
+    cloudbuild.googleapis.com \
+    containerregistry.googleapis.com \
+    --async

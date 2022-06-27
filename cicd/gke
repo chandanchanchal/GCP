@@ -31,3 +31,24 @@ cat k8s/deployments/dev/frontend-dev.yam
 
 git config --global user.email "YOUR_EMAIL_ADDRESS"
 git config --global user.name "YOUR_USERNAME"
+
+
+gcloud source repos create gke-progression
+git init
+git config credential.helper gcloud.sh
+git remote add gcp https://source.developers.google.com/p/$PROJECT_ID/r/gke-progression
+git branch -m main
+git add . && git commit -m "initial commit"
+git push gcp main
+
+
+gcloud container clusters create ${CLUSTER} \
+    --project=${PROJECT_ID} \
+    --zone=${ZONE}
+    
+    
+    gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+    --member=serviceAccount:${PROJECT_NUMBER}@cloudbuild.gserviceaccount.com \
+    --role=roles/container.developer
+    
+    

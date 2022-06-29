@@ -101,7 +101,7 @@ git push gcp main
 while true; do curl -w "\n" http://$PRODUCTION_IP; sleep 1;  done
 
 
-6. Automating deployments for git main branch
+## Automating deployments for git main branch
 Before code is released to production, it's common to release code to a small subset of live traffic before migrating all traffic to the new code base.
 
 In this section, you implement a trigger that is activated when code is committed to the main branch. The trigger deploys the canary deployment which receives 25% of all live traffic to the new revision.

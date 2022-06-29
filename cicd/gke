@@ -53,7 +53,7 @@ gcloud container clusters create ${CLUSTER} \
     
     gcloud builds submit --tag gcr.io/$PROJECT_ID/$APP_NAME:1.0.0 src/
     
-    kubectl create ns production
+kubectl create ns production
 kubectl apply -f k8s/deployments/prod -n production
 kubectl apply -f k8s/deployments/canary -n production
 kubectl apply -f k8s/services -n production

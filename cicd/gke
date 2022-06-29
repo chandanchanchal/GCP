@@ -63,8 +63,33 @@ kubectl get service $APP_NAME -n production
 export PRODUCTION_IP=$(kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}"  --namespace=production services $APP_NAME)
 curl http://$PRODUCTION_IP
 
+  "branchName": "main",
+  "invertRegex": true
+  
+  kubectl get ns ${BRANCH_NAME} || kubectl create ns ${BRANCH_NAME}
+  kubectl apply --namespace ${BRANCH_NAME} --recursive -f k8s/deployments/dev
+  kubectl apply --namespace ${BRANCH_NAME} --recursive -f k8s/services
+  
+
+
 gcloud beta builds triggers create cloud-source-repositories \
   --trigger-config build/main-trigger.json
+  
+  git checkout -b new-feature-1
+  
+  @app.route('/')
+def hello_world():
+    return 'Hello World v1.1'
+    
+    git add . && git commit -m "updated" && git push gcp new-feature-1
+    
+    kubectl get service $APP_NAME -n new-feature-1
+    
+    export BRANCH_IP=$(kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}"  --namespace=new-feature-1 services $APP_NAME)
+    
+    curl http://$BRANCH_IP
+    
+    
   
 git checkout main
 git merge new-feature-1

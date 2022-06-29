@@ -63,5 +63,16 @@ kubectl get service $APP_NAME -n production
 export PRODUCTION_IP=$(kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}"  --namespace=production services $APP_NAME)
 curl http://$PRODUCTION_IP
 
+gcloud beta builds triggers create cloud-source-repositories \
+  --trigger-config build/main-trigger.json
+  
+git checkout main
+git merge new-feature-1
+git push gcp main
+
+while true; do curl -w "\n" http://$PRODUCTION_IP; sleep 1;  done
+
+
+
     
     

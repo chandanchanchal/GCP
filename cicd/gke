@@ -101,6 +101,25 @@ git push gcp main
 while true; do curl -w "\n" http://$PRODUCTION_IP; sleep 1;  done
 
 
+6. Automating deployments for git main branch
+Before code is released to production, it's common to release code to a small subset of live traffic before migrating all traffic to the new code base.
 
+In this section, you implement a trigger that is activated when code is committed to the main branch. The trigger deploys the canary deployment which receives 25% of all live traffic to the new revision.
+
+Set up the trigger for the main branch:
+
+gcloud beta builds triggers create cloud-source-repositories \
+  --trigger-config build/main-trigger.json
+To review the new trigger, go to the Cloud Build Triggers page in the Console.Go to Triggers
+Merge the branch to the main line and push to the remote repository:
+
+git checkout main
+git merge new-feature-1
+git push gcp main
+To review the build in progress, go to the Cloud Build History page in the Console.Go to BuildsOnce the build has completed continue to the next step
+Review multiple responses from the serverRun the following command and note that approximately 25% of the responses are showing the new response of Hello World v1.1
+
+while true; do curl -w "\n" http://$PRODUCTION_IP; sleep 1;  done
+When you're ready to continue press Ctrl+c to exit out of the loop.
     
     

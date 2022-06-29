@@ -63,6 +63,9 @@ kubectl get service $APP_NAME -n production
 export PRODUCTION_IP=$(kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}"  --namespace=production services $APP_NAME)
 curl http://$PRODUCTION_IP
 
+export BRANCH_NAME=new-feature-1
+#inside build/main-trigger.json make sure line number 69 and 70  must be there
+
   "branchName": "main",
   "invertRegex": true
   

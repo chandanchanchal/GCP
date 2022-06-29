@@ -101,7 +101,7 @@ git push gcp main
 while true; do curl -w "\n" http://$PRODUCTION_IP; sleep 1;  done
 
 
-## Automating deployments for git main branch
+################### Automating deployments for git main branch
 Before code is released to production, it's common to release code to a small subset of live traffic before migrating all traffic to the new code base.
 
 In this section, you implement a trigger that is activated when code is committed to the main branch. The trigger deploys the canary deployment which receives 25% of all live traffic to the new revision.
@@ -121,5 +121,26 @@ Review multiple responses from the serverRun the following command and note that
 
 while true; do curl -w "\n" http://$PRODUCTION_IP; sleep 1;  done
 When you're ready to continue press Ctrl+c to exit out of the loop.
+
+
+###################### 7. Automating deployments for git tags
+After the canary deployment is validated with a small subset of traffic, you release the deployment to the remainder of the live traffic.
+
+In this section, you set up a trigger that is activated when you create a tag in the repository. The trigger labels the image with the appropriate tag then deploys the updates to prod ensuring 100% of traffic is accessing the tagged image.
+
+Set up the tag trigger:
+
+gcloud beta builds triggers create cloud-source-repositories \
+  --trigger-config build/tag-trigger.json
+To review the new trigger, go to the Cloud Build Triggers page in the Console.Go to Triggers
+Create a new tag and push to the remote repository:
+
+git tag 1.1
+git push gcp 1.1
+To review the build in progress, go to the Cloud Build History page in the Console.Go to Builds
+Review multiple responses from the serverRun the following command and note that 100% of the responses are showing the new response of Hello World v1.1This may take a moment as the new pods are deployed and health checked within GKE
+
+while true; do curl -w "\n" http://$PRODUCTION_IP; sleep 1;  done
+When you're ready to continue press Ctrl+c to exit out of the loop.Congratulations! You created CI/CD triggers in Cloud Build for branches and tags to deploy your apps to GKE.
     
     

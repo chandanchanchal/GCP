@@ -57,5 +57,11 @@ kubectl create ns production
 kubectl apply -f k8s/deployments/prod -n production
 kubectl apply -f k8s/deployments/canary -n production
 kubectl apply -f k8s/services -n production
+
+kubectl get pods -n production -l app=$APP_NAME -l role=frontend
+kubectl get service $APP_NAME -n production
+export PRODUCTION_IP=$(kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}"  --namespace=production services $APP_NAME)
+curl http://$PRODUCTION_IP
+
     
     
